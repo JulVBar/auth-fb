@@ -8,7 +8,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 
-import { AuthGuard } from './services/auth-guard.guard';
+import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },

@@ -18,6 +18,7 @@
 
 body {
   min-height: 100vh;
+  background: $white;
 }
 
 h1, h2, h3, h4, h5, p {
@@ -31,7 +32,7 @@ ul {
 }
 
 a {
-  text-decoration: none !important;
+  text-decoration: none;
 }
 
 img {
@@ -45,44 +46,75 @@ img {
   object-fit: cover;
 }
 
-button {
+.button {
   border: none;
-  padding: 0;
   background: transparent;
   cursor: pointer;
+  border-radius: $br;
+  text-align: center;
+  overflow: hidden;
+  transform: translate( 0, 0 );
+  color: $white;
+
+  &:before {
+    content: '';
+    position: absolute;
+    background: rgba(255, 255, 255, .4);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate( -50%, -50% );
+    width: 0;
+    height: 0;
+    z-index: 1;
+  }
+  &:hover::before {
+    animation: 1s pulse ease-in-out;
+  }
 }
 
-// header {
-// flex: 0 0 6.875rem;
-// }
-
-// main {
-//   flex: 1 1 auto;
-// }
-
-.container {
-  width: 100%;
+.button-basic {
+  min-width: 10rem;
+  background: $gradient;
+  box-shadow: $box-shadow;
+  padding: 0.7rem 2rem;
 }
 
-.no-scroll {
-overflow-y: hidden;
+.button-round {
+  width: 5rem;
+  height: 5rem;
+  background: $gradient;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: $box-shadow;
+  svg {
+    width: 2rem;
+    height: 2rem;
+    fill: $white;
+  }
 }
 
-.moving-bg {
-	background: $gradient-bg;
-	background-size: 400% 400%;
-	animation: gradient 15s ease infinite;
-	height: 100vh;
+.button-stroked {
+  min-width: 10rem;
+  background: transparent;
+  border: 1px solid $white;
+  color: $white;
+  padding: 0.7rem 2rem;
+  position: relative;
 }
 
-@keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+@keyframes pulse {
+  0% {
+    width: 0px;
+    height: 0px;
+  }
+  50% {
+    width: 20rem;
+    height: 20rem;
+  }
+  100% {
+    opacity: 0;
+  }
 }

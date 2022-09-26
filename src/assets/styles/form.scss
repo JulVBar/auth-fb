@@ -1,0 +1,75 @@
+@import './variables.scss';
+@import './moving-bg.scss';
+
+.form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1rem 2rem;
+  box-shadow: $box-shadow;
+  border-radius: $br;
+  min-width: 25rem;
+  min-height: 20rem;
+  text-align: center;
+
+  background: $gradient-bg;
+	background-size: 200% 200%;
+	animation: gradient 8s ease infinite;
+
+  &-title {
+    font-family: $title-font;
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: $white;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  &-control {
+    position: relative;
+    input {
+      width: 100%;
+      padding: 10px 0;
+      font-size: 16px;
+      color: $white;
+      margin-bottom: 30px;
+      border: none;
+      border-bottom: 1px solid $white;
+      outline: none;
+      background: transparent;
+      &:focus ~ label,
+      &:valid ~ label {
+        top: -20px;
+        left: 0;
+        color: $color1;
+        font-size: 12px;
+      }
+    }
+    label {
+      position: absolute;
+      top:0;
+      left: 0;
+      padding: 10px 0;
+      font-size: 16px;
+      color: #fff;
+      pointer-events: none;
+      transition: .5s;
+    }
+  }
+  button {
+    margin-top: 2rem;
+  }
+
+  &-footer {
+    color: $white;
+    font-size: 0.8rem;
+    margin-top: 3rem;
+
+    a {
+      font-size: 0.8rem;
+      color: $color1;
+      text-decoration: underline;
+    }
+  }
+}
