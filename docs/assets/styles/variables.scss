@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Open+Sans:wght@400;700&display=swap');
+
+$main-font: 'Open Sans', sans-serif;
+$title-font: 'Dancing Script', cursive;
+
+//colors
+$black: #111827;
+$white: #ffffff;
+$grey: #e6e6e6;
+
+$color1: #d5f15e;
+$color2: #86c481;
+$color3: #42b49b;
+$color4: #319c66;
+
+$gradient: linear-gradient(243.98deg, $color2 -16.81%, $color3 81.37%);
+$gradient-bg: linear-gradient(-45deg, $color1, $color2, $color3, $color4);
+
+$br: 0.3rem;
+
+//shadow
+$box-shadow: 0 3px 1px -2px #0003, 0 2px 2px #00000024, 0 1px 5px #0000001f;
