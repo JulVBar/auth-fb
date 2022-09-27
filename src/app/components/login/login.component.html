@@ -7,14 +7,18 @@
 
   <div class="form">
     <h1 class="form-title">Login</h1>
-    <form class="form-content">
+    <form class="form-content" [formGroup]="loginForm" (ngSubmit)="loginUser()">
       <div class="form-control">
-        <input type="text" name="" required="">
-        <label>Email</label>
+        <input autocomplete="off" formControlName="email" type="email" id="email" required>
+        <label for="email">Email</label>
       </div>
       <div class="form-control">
-        <input type="password" name="" required="">
-        <label>Password</label>
+        <input autocomplete="off" formControlName="password" type="password" id="password" required>
+        <label for="password">Password</label>
+      </div>
+
+      <div *ngIf="firebaseErrorMessage != ''" class="error-style">
+        <span>{{ firebaseErrorMessage }}</span>
       </div>
 
       <button class="button button-stroked" type="submit">Submit</button>
