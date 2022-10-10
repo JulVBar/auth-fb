@@ -22,8 +22,12 @@ export class AuthGuard implements CanActivate {
         this.afAuth.onAuthStateChanged((user) => {
             if (user) {
 
-                // if (!user.emailVerified)                            // if the user hasn't verified their email, send them to that page
-                //     this.router.navigate(['/verify-email']);
+                if (!user.emailVerified) {      // if the user hasn't verified their email, send them to that page
+                  this.router.navigate(['/verify-email']);
+                  alert('Verify your email!!!')
+                }
+
+
 
                 resolve(true);
             } else {

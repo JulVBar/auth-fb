@@ -118,3 +118,23 @@ img {
     opacity: 0;
   }
 }
+
+.error-style {
+  span {
+    color: rgb(136, 38, 38);
+    font-weight: 700;
+  }
+}
+
+.page {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+
+  .button-round {
+    position: absolute;
+    top: 2.5rem;
+    left: 2.5rem;
+    z-index: 3;
+  }
+}

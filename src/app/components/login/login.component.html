@@ -1,4 +1,4 @@
-<div class="login-page">
+<div class="login page">
   <button class="button button-round" routerLink="/home">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
       <path d="M12 2.0996094L1 12L4 12L4 21L9 21L9 14L15 14L15 21L20 21L20 12L23 12L19 8.4003906L19 4L17 4L17 6.5996094L12 2.0996094 z"/>
@@ -23,9 +23,16 @@
 
       <button class="button button-stroked" type="submit">Submit</button>
     </form>
+
+    <button class="button button-stroked" (click)="googleSignIn()">Signed with Google</button>
+
     <div class="form-footer">
       Don't have an account?
       <a routerLink="/signup">Sing up!</a>
     </div>
+
+    <a class="form-footer" routerLink="/forgot-password">
+      Forgot password
+    </a>
   </div>
 </div>

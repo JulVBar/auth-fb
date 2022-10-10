@@ -1,1 +1,38 @@
-<p>signup works!</p>
+<div class="signup page">
+  <button class="button button-round" routerLink="/home">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M12 2.0996094L1 12L4 12L4 21L9 21L9 14L15 14L15 21L20 21L20 12L23 12L19 8.4003906L19 4L17 4L17 6.5996094L12 2.0996094 z"/>
+    </svg>
+  </button>
+
+  <div class="form">
+    <h1 class="form-title">Sign up</h1>
+    <form class="form-content" [formGroup]="signupForm" (ngSubmit)="signup()">
+      <div class="form-control">
+        <input autocomplete="off" formControlName="displayName" type="text" id="displayName" required>
+        <label for="displayName">Username</label>
+      </div>
+      <div class="form-control">
+        <input autocomplete="off" formControlName="email" type="email" id="email" required>
+        <label for="email">Email</label>
+      </div>
+      <div class="form-control">
+        <input autocomplete="off" formControlName="password" type="password" id="password" required>
+        <label for="password">Password</label>
+      </div>
+
+      <div *ngIf="firebaseErrorMessage != ''" class="error-style">
+        <span>{{ firebaseErrorMessage }}</span>
+      </div>
+
+      <button class="button button-stroked" type="submit">Submit</button>
+    </form>
+    <div class="form-footer">
+      Have an account?
+      <a routerLink="/login">Log in!</a>
+    </div>
+    <a class="form-footer" routerLink="/forgot-password">
+      Forgot password
+    </a>
+  </div>
+</div>

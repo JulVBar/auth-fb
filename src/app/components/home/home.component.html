@@ -5,9 +5,16 @@
     <h2 class="home-subtitle">on firebase</h2>
     <p class="home-content">Firebase Authentication for logins and Cloud Firestore
       to build a NoSQL database to store details about users.</p>
-      <div class="home-btns">
+      <div *ngIf="!(afAuth.user | async)" class="home-btns">
         <a class="button button-basic" routerLink="/signup">Sign up</a>
-        <a class="button button-basic" routerLink="/login">Log in</a>
+        <a  class="button button-basic" routerLink="/login">Log in</a>
       </div>
+
+      <div *ngIf="afAuth.user | async" class="home-btns">
+        <a class="button button-basic" routerLink="/dashboard">Dashboard</a>
+        <a class="button button-basic" (click)="logout()">Log out</a>
+      </div>
+
+
   </div>
 </div>

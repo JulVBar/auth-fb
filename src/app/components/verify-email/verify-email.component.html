@@ -1,1 +1,26 @@
-<p>verify-email works!</p>
+<div class="verifyEmail-page">
+
+</div>
+
+<div *ngIf="!(afAuth.user | async)">
+    <span>User is not logged in -- the user needs to be logged in to resend the verification email</span>
+</div>
+
+<div>
+    <p>A verification email will be sent to <span>{{ email }}</span>.</p>
+
+    <div *ngIf="firebaseErrorMessage != ''" class="error-style">
+        <span>{{ firebaseErrorMessage }}</span>
+    </div>
+
+    <button [disabled]="mailSent" (click)="resendVerificationEmail()">Resend verification email</button>
+    <div *ngIf="mailSent">
+        <p>An email has been sent!</p>
+
+    </div>
+</div>
+
+
+<button routerLink="/login">
+  <span>Log in</span>
+</button>
