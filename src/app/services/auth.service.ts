@@ -1,9 +1,7 @@
-import { AnimationDriver } from '@angular/animations/browser';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
 import { GoogleAuthProvider, GithubAuthProvider, FacebookAuthProvider} from '@angular/fire/auth';
 
 @Injectable({
@@ -61,8 +59,9 @@ export class AuthService {
                       email_lower: emailLower
                   });
 
-                  result.user?.sendEmailVerification();    // immediately send the user a verification email
-                  this.router.navigate(['/login']);
+                  result.user?.sendEmailVerification();
+
+                  this.router.navigate(['/verify-email']);
           })
           .catch(error => {
               console.log('Auth Service: signup error', error);
@@ -76,7 +75,6 @@ export class AuthService {
       return this.afAuth.sendPasswordResetEmail(email)
           .then(() => {
               console.log('Auth Service: reset password success');
-              // this.router.navigate(['/amount']);
           })
           .catch(error => {
               console.log('Auth Service: reset password error...');
@@ -87,19 +85,19 @@ export class AuthService {
           });
   }
 
-  // async resendVerificationEmail() {                         // verification email is sent in the Sign Up function, but if you need to resend, call this function
-  //     return (await this.afAuth.currentUser).sendEmailVerification()
-  //         .then(() => {
-  //             // this.router.navigate(['home']);
-  //         })
-  //         .catch(error => {
-  //             console.log('Auth Service: sendVerificationEmail error...');
-  //             console.log('error code', error.code);
-  //             console.log('error', error);
-  //             if (error.code)
-  //                 return error;
-  //         });
-  // }
+  async resendVerificationEmail() {// verification email is sent in the Sign Up function, but if you need to resend, call this function
+      return (await this.afAuth.currentUser)?.sendEmailVerification()
+          .then(() => {
+              // this.router.navigate(['/login']);
+          })
+          .catch(error => {
+              console.log('Auth Service: sendVerificationEmail error...');
+              console.log('error code', error.code);
+              console.log('error', error);
+              if (error.code)
+                  return error;
+          });
+  }
 
   logoutUser(): Promise<void> {
       return this.afAuth.signOut()
@@ -133,7 +131,7 @@ export class AuthService {
     return this.afAuth.signInWithPopup(new GoogleAuthProvider).then(res => {
 
       this.router.navigate(['/dashboard']);
-      localStorage.setItem('token',JSON.stringify(res.user?.uid));
+      // localStorage.setItem('token',JSON.stringify(res.user?.uid));
 
     }, err => {
       alert(err.message);
